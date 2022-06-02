@@ -11,7 +11,6 @@
                     @foreach($category as $each)
 
                         <x-category :each="$each"/>
-                   
                      
                     @endforeach
                     
