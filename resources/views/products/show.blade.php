@@ -17,7 +17,7 @@
                             </p>
                         </div>
 
-                        {{$product->variations}}
+                        <livewire:product-selector :product="$product" />
 
                     </div>
                 </div>
