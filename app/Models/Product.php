@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Cknow\Money\Money;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Spatie\Image\Manipulations;
+// use App\Models\Manipulations;
 
 
 class Product extends Model implements HasMedia
@@ -22,5 +25,12 @@ class Product extends Model implements HasMedia
     public function variations()
     {
         return $this->hasMany(Variation::class);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('thumb200x200')
+            ->fit(Manipulations::FIT_CROP, 200, 200);
     }
 }
