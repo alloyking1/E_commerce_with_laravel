@@ -28,6 +28,11 @@ class Variation extends Model
         return $this->stockCount() > 0;
     }
 
+    public function lowStock()
+    {
+        return !$this->outOfStock() && $this->stockCount() < 5;
+    }
+
     public function outOfStock()
     {
         return !$this->inStock();

@@ -9,7 +9,8 @@
 
         @foreach ($variations as $variation)
         <option value="{{$variation->id}}" {{$variation->outOfStock() ?'disabled' : '' }}>
-            {{$variation->title}} {{$variation->outOfStock() ? '(Out of stock)' : '' }}
+            {{$variation->title}} {{$variation->lowStock() ? '(Low of stock)' : '' }} {{$variation->outOfStock() ?
+            '(Out of stock)' : '' }}
         </option>
         @endforeach
 
