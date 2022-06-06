@@ -9,7 +9,7 @@
 
         @foreach ($variations as $variation)
         <option value="{{$variation->id}}">
-            {{$variation->title}} {{$variation->stocks->sum('amount')}}
+            {{$variation->title}} {{$variation->outOfStock() ? '(Out of stock)' : '' }}
         </option>
         @endforeach
 

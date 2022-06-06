@@ -23,6 +23,21 @@ class Variation extends Model
         return $this->hasMany(Stock::class);
     }
 
+    public function inStock()
+    {
+        return $this->stockCount() > 0;
+    }
+
+    public function outOfStock()
+    {
+        return !$this->inStock();
+    }
+
+    public function stockCount()
+    {
+        return $this->descendantsAndSelf->sum(fn ($variation) => $variation->stocks->sum('amount'));
+    }
+
     //add to trait to re-use later
     public function formattedPrice()
     {
