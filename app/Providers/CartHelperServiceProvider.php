@@ -16,7 +16,7 @@ class CartHelperServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(CartHelperInterface::class, function () {
-            return new CartHelper;
+            return new CartHelper(session());
         });
     }
 
@@ -27,6 +27,6 @@ class CartHelperServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // dd(session());
     }
 }
