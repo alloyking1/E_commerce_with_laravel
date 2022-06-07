@@ -16,6 +16,11 @@ class ProductGalary extends Component
         // dd($this->product->getMedia());
     }
 
+    public function selectedImage($url)
+    {
+        $this->selectedImageUrl = $url;
+    }
+
     public function render()
     {
         return view('livewire.product-galary');
