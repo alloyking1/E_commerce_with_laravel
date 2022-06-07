@@ -10,14 +10,15 @@
                         <div>
                             <h1>{{$product->title}}</h1>
                             <h1 class="font-semibold text-xl mt-2">
-                                 {{$product->formattedPrice()}}
+                                {{$product->formattedPrice()}}
                             </h1>
                             <p class="mt-2 text-gray-500">
-                                Description
+                                {{$product->description}}
                             </p>
                         </div>
 
-                        {{$product->description}}
+                        <livewire:product-selector :product="$product" />
+
                     </div>
                 </div>
             </div>
