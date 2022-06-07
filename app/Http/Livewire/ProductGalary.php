@@ -8,10 +8,12 @@ class ProductGalary extends Component
 {
 
     public $product;
+    public $selectedImageUrl;
 
     public function mount()
     {
-        dd($this->product->media);
+        $this->selectedImageUrl = $this->product->getFirstMediaUrl();
+        // dd($this->product->getMedia());
     }
 
     public function render()
