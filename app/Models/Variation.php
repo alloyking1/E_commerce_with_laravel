@@ -7,11 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 use \Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 use Cknow\Money\Money;
 use App\Models\Stock;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\Image\Manipulations;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Variation extends Model
+class Variation extends Model implements HasMedia
 {
     use HasFactory;
     use HasRecursiveRelationships;
+    use InteractsWithMedia;
 
     public function product()
     {
@@ -47,5 +52,12 @@ class Variation extends Model
     public function formattedPrice()
     {
         return Money::USD($this->price);
+    }
+
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this
+            ->addMediaConversion('thumb200x200')
+            ->fit(Manipulations::FIT_CROP, 200, 200);
     }
 }

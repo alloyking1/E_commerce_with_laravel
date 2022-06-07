@@ -27,6 +27,13 @@ class Product extends Model implements HasMedia
         return $this->hasMany(Variation::class);
     }
 
+    //add fall back image
+    // public function registerMediaCollections(): void
+    // {
+
+
+    // }
+
     public function registerMediaConversions(?Media $media = null): void
     {
         $this
